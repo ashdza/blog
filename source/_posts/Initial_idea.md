@@ -1,6 +1,6 @@
 ---
 title: App idea
-date: 2018-07-21 13:27:53
+date: 2018-06-20 13:27:53
 tags: life, music
 ---
 
