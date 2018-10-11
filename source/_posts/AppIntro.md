@@ -16,4 +16,4 @@ So, I have thought more about my idea for a music feedback service and how I cou
 - Sharing 
     - Musicians can upload a recording and share it with specific people, whom the app will notify
     - Recordings are otherwise private
-  \
+  
