@@ -98,3 +98,5 @@ deploy:
   repo: git@github.com-ashley:ashdza/blog.git
   branch: gh-pages
   message: "update blog"
+  name: Ashley
+  email: ash.1303.github@dsouzaville.com
