@@ -100,3 +100,5 @@ deploy:
   message: "update blog"
   name: Ashley
   email: ash.1303.github@dsouzaville.com
+  user.name: Ashley
+  user.email: ash.1303.github@dsouzaville.com
