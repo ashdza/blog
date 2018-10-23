@@ -22,7 +22,7 @@ That `Data` tab will be very useful for the backend development of Lentil, where
 
 #### song - table
 
-Here, I am defining the *table* for `song`. The *columns* are the fields in the data type, and each song is a row in this table. Every song has a unique identifier `id` which serves as its *primary key*, and a `title`.
+Here, I am defining the *table* for `song`. The *columns* are the fields in the data type, and each song is a row in this table. Columns are limited to simple types like `int` and `text`. Every song has a unique identifier `id` which serves as its *primary key*, and a `title`.
 
 {% asset_img make-table-song.png Make Table Song %}
 
