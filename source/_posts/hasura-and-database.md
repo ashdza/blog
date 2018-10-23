@@ -16,15 +16,17 @@ At this point my Heroku app has a running Postgres database and a Hasura GraphQL
 
 {% asset_img hasura_start_screen.png Start Screen %}
 
-## Lentil - database
+## Lentil : Database
 
 That `Data` tab will be very useful for the backend development of Lentil, where I will use tables and relationships to represent my different data types (song, comment, musician), and rows in those tables to represent instances of those types.
 
-#### song - table
+#### Song : Table and Columns
 
 Here, I am defining the *table* for `song`. The *columns* are the fields in the data type, and each song is a row in this table. Columns are limited to simple types like `int` and `text`. Every song has a unique identifier `id` which serves as its *primary key*, and a `title`.
 
 {% asset_img make-table-song.png Make Table Song %}
+
+#### Song : Inter-table Relations
 
 Tables for `comment` and `musician` will be built in a similar manner. However, there needs to be a relationship between these tables. For example, each `comment` relates to a specific song, using the `song_id` field in `comment` as a *foreign key* that refers to the `id` column in a unique row of `song`. 
 
