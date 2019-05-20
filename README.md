@@ -5,9 +5,9 @@ Use all CLI commands in the blog-site folder. The source for posts themselves ar
 - New post: `hexo new "Some Title"` => `some-title.md` (and   `some-title` folder for images, if any)
 - Locally view site: `hexo server`
 - Publish to web:
-    - Git add, commit, push
-	- Clean old version: `hexo clean`
-	- Generate & publish: `hexo deploy --generate`
+    - Git add, commit, push (pushes source files)
+	- Remove old generated site: `hexo clean`
+	- Generate new site & publish: `hexo deploy --generate`
 - Detailed commands here: https://hexo.io/docs/commands.html
 - Configuration is in file _config.yml
 
