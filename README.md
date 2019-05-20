@@ -1,4 +1,4 @@
-Using Hexo for my blog. Supports markdown and embedded LaTex (see small LaTex example https://github.com/thcd/hexo-katex)
+Using Hexo for my blog. Supports markdown and embedded LaTex (small LaTex embedding e.g. https://github.com/thcd/hexo-katex, nice editable cheat-sheet https://math-on-quora.surge.sh/)
 
 Use all CLI commands in the blog-site folder. The source for posts themselves are stored in `source/_posts`.
 
