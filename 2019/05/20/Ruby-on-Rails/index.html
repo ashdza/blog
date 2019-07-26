@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+
+  
+  <title>Ruby on Rails Pt. 1 | Ashley&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="During my internship this summer at OpenStax, I had to learn and work with Ruby on Rails. Aside from two 2-hour long crash courses given by my supervisor at the beginning of the summer, I was pretty m">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ruby on Rails Pt. 1">
+<meta property="og:url" content="http://ashdza.github.io/blog/2019/05/20/Ruby-on-Rails/index.html">
+<meta property="og:site_name" content="Ashley&#39;s Blog">
+<meta property="og:description" content="During my internship this summer at OpenStax, I had to learn and work with Ruby on Rails. Aside from two 2-hour long crash courses given by my supervisor at the beginning of the summer, I was pretty m">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://ashdza.github.io/blog/2019/05/20/Ruby-on-Rails/confused_coder.png">
+<meta property="og:updated_time" content="2019-07-26T20:16:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ruby on Rails Pt. 1">
+<meta name="twitter:description" content="During my internship this summer at OpenStax, I had to learn and work with Ruby on Rails. Aside from two 2-hour long crash courses given by my supervisor at the beginning of the summer, I was pretty m">
+<meta name="twitter:image" content="http://ashdza.github.io/blog/2019/05/20/Ruby-on-Rails/confused_coder.png">
+  
+    <link rel="alternate" href="/blog/atom.xml" title="Ashley&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/blog/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">Ashley&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://ashdza.github.io/blog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Ruby-on-Rails" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2019/05/20/Ruby-on-Rails/" class="article-date">
+  <time datetime="2019-05-20T19:41:51.000Z" itemprop="datePublished">2019-05-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Ruby on Rails Pt. 1
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>During my internship this summer at OpenStax, I had to learn and work with Ruby on Rails. Aside from two 2-hour long crash courses given by my supervisor at the beginning of the summer, I was pretty much on my own figuring out how to navigate the endless directories and files in a rails project, all with distinct roles and interactions.</p>
+<h2 id="Confusion"><a href="#Confusion" class="headerlink" title="Confusion"></a>Confusion</h2><p>In a single rails project, there are several directories (app, bin, config, db, lib, log, public, spec…) that seem to go on and on and upon first glance, I had no idea what any of them did. After the crash course, I learned that the <code>spec</code> folder contains specs, which are supposedly ‘human-readable’ test files - I would have initially argued the ‘human-readable’ part. </p>
+<p>However, as I practiced what we had gone over in the crash course, I started to see how a seemingly weirdly-worded body of code such as:<br>    <code>context &quot;when sent a valid input&quot; do</code><br>        <code>it &quot;status is 200 (success)</code><br>            <code>expect(status).to eq(200)</code><br>would print the almost-English statement, “when sent a valid input, status is 200” message upon running the test to check the status, and how this would become especially helpful for reading tests when running many at once.</p>
+<p>The spec file I was assigned to write required me to deal with mock objects, and understand the interactions between routes, controllers (what is a controller???), and other classes, none of which I had the faintest idea about, leading to much panic and confusion piled on top of nerves from starting my first software internship and an overwhelming fear of disappointing my supervisor.<br><img src="/blog/2019/05/20/Ruby-on-Rails/confused_coder.png" title="Confused Coder"></p>
+<p>It ended up taking me several workdays to painfully write out just a few coherent specs in a spec file, but after that I began to get the hang of it. (or so I thought)</p>
+<p>To be continued…</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://ashdza.github.io/blog/2019/05/20/Ruby-on-Rails/" data-id="cjykjr84f0004e0mnnmrwpj5m" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/blog/2018/10/21/hasura-and-database/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hasura, GraphQL, and Postgres database</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/life-music/">life, music</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/music-app/">music, app</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/life-music/" style="font-size: 10px;">life, music</a> <a href="/blog/tags/music-app/" style="font-size: 10px;">music, app</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/06/">June 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2019/05/20/Ruby-on-Rails/">Ruby on Rails Pt. 1</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2018/10/21/hasura-and-database/">Hasura, GraphQL, and Postgres database</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2018/07/02/Lentil-scenario-1/">Lentil - Initial Scenario</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2018/06/21/AppIntro/">Lentil</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2018/06/20/Initial_idea/">App idea</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Ashley D&#39;Souza<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css">
+  <script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/blog/js/script.js"></script>
+
+
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+  
+
+  
+  <title>Hasura, GraphQL, and Postgres database | Ashley&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Since I have an initial front-end working with ReasonML + React, I started thinking about the back-end and did some experiments. DeploymentI just set up and deployed Hasura’s GraphQL server for Postgr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hasura, GraphQL, and Postgres database">
+<meta property="og:url" content="http://ashdza.github.io/blog/2018/10/21/hasura-and-database/index.html">
+<meta property="og:site_name" content="Ashley&#39;s Blog">
+<meta property="og:description" content="Since I have an initial front-end working with ReasonML + React, I started thinking about the back-end and did some experiments. DeploymentI just set up and deployed Hasura’s GraphQL server for Postgr">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://ashdza.github.io/blog/2018/10/21/hasura-and-database/hasura_start_screen.png">
+<meta property="og:image" content="http://ashdza.github.io/blog/2018/10/21/hasura-and-database/make-table-song.png">
+<meta property="og:image" content="http://ashdza.github.io/blog/2018/10/21/hasura-and-database/comment-song-relation.png">
+<meta property="og:updated_time" content="2019-07-26T19:34:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hasura, GraphQL, and Postgres database">
+<meta name="twitter:description" content="Since I have an initial front-end working with ReasonML + React, I started thinking about the back-end and did some experiments. DeploymentI just set up and deployed Hasura’s GraphQL server for Postgr">
+<meta name="twitter:image" content="http://ashdza.github.io/blog/2018/10/21/hasura-and-database/hasura_start_screen.png">
+  
+    <link rel="alternate" href="/blog/atom.xml" title="Ashley&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/blog/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/blog/" id="logo">Ashley&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/blog/">Home</a>
+        
+          <a class="main-nav-link" href="/blog/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://ashdza.github.io/blog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-hasura-and-database" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2018/10/21/hasura-and-database/" class="article-date">
+  <time datetime="2018-10-22T02:11:37.000Z" itemprop="datePublished">2018-10-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Hasura, GraphQL, and Postgres database
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Since I have an initial front-end working with ReasonML + React, I started thinking about the back-end and did some experiments.</p>
+<h2 id="Deployment"><a href="#Deployment" class="headerlink" title="Deployment"></a>Deployment</h2><p>I just set up and deployed Hasura’s GraphQL server for Postgres and it was very easy. I simply: </p>
+<ul>
+<li>Made a Heroku account</li>
+<li>Went to Hasura.io and followed the single-click button to make a new Heroku app</li>
+<li>Deployed!</li>
+</ul>
+<p>At this point my Heroku app has a running Postgres database with a Hasura GraphQL server in front. In the app screen below, we are interested in the <code>Data</code> tab — the interface to the Postgres database.</p>
+<img src="/blog/2018/10/21/hasura-and-database/hasura_start_screen.png" title="Start Screen">
+<h2 id="Lentil’s-Database"><a href="#Lentil’s-Database" class="headerlink" title="Lentil’s Database"></a>Lentil’s Database</h2><p>That <code>Data</code> tab will be very useful for the back-end development of Lentil, where I will use tables and relationships to represent my different data types (song, comment, musician), and rows in those tables to represent instances of those types.</p>
+<h4 id="Song-Table-and-Columns"><a href="#Song-Table-and-Columns" class="headerlink" title="Song : Table and Columns"></a>Song : Table and Columns</h4><p>Here, I am defining the <em>table</em> for <code>song</code>. The <em>columns</em> are the fields in the data type, and each song is a row in this table. Columns are limited to simple types like <code>int</code> and <code>text</code>. Every song has a unique identifier <code>id</code> which serves as its <em>primary key</em>, and a string <code>title</code>.</p>
+<img src="/blog/2018/10/21/hasura-and-database/make-table-song.png" title="Make Table Song">
+<h4 id="Song-Inter-table-Relations"><a href="#Song-Inter-table-Relations" class="headerlink" title="Song : Inter-table Relations"></a>Song : Inter-table Relations</h4><p>Tables for <code>comment</code> and <code>musician</code> will be built in a similar manner. However, there needs to be a relationship between these tables. For example, each <code>comment</code> relates to a specific song, using the <code>song_id</code> field in <code>comment</code> as a <em>foreign key</em> that refers to the <code>id</code> column in a unique row of <code>song</code>. </p>
+<img src="/blog/2018/10/21/hasura-and-database/comment-song-relation.png" title="Comment Song Relation">
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://ashdza.github.io/blog/2018/10/21/hasura-and-database/" data-id="cjykjr84g0005e0mns0t0gkgp" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/blog/2019/05/20/Ruby-on-Rails/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Ruby on Rails Pt. 1
+        
+      </div>
+    </a>
+  
+  
+    <a href="/blog/2018/07/02/Lentil-scenario-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Lentil - Initial Scenario</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/life-music/">life, music</a></li><li class="tag-list-item"><a class="tag-list-link" href="/blog/tags/music-app/">music, app</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/blog/tags/life-music/" style="font-size: 10px;">life, music</a> <a href="/blog/tags/music-app/" style="font-size: 10px;">music, app</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2018/06/">June 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2019/05/20/Ruby-on-Rails/">Ruby on Rails Pt. 1</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2018/10/21/hasura-and-database/">Hasura, GraphQL, and Postgres database</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2018/07/02/Lentil-scenario-1/">Lentil - Initial Scenario</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2018/06/21/AppIntro/">Lentil</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2018/06/20/Initial_idea/">App idea</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 Ashley D&#39;Souza<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/blog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/blog/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css">
+  <script src="/blog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/blog/js/script.js"></script>
+
+
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</body>
+</html>
